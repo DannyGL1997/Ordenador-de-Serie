@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<title>Orden de Serie</title> 
+<style type="text/css">
+#caja { width: 500px; border: 1px solid black; float: left; min-height: 100px;}
+body{ background: #c8f1e2;}  
+</style>
+<script type="text/javascript">
+function ordenarAsc(a,b){
+	return a-b;
+}
+function numeracion() { 
+         numero = [10,2,0,1,3,4,5];
+         }
+function elInverso() { //método sort()
+         numeracion();
+         inverso = numero.sort(ordenarAsc);
+         texto = "Ordenado Acendentemente(). <br>";
+         escribir(texto, inverso);
+         }
+function porcion() { //metodo slice()
+         n1 = document.orden.num1.value;
+         n2 = document.orden.num2.value;
+         n1--;
+         numeracion();
+         miPorcion = numero.slice(n1,n2);
+         texto = "Posición de cada numero:<br/>";
+         escribir(texto, miPorcion);
+         }
+function quitar() { //método shift()
+         numeracion();
+         quitado = numero.shift();
+         texto1 = "Quitar Primer numero<br/>";
+         escribir(texto1, numero);
+         texto.innerHTML += "<br/> el numero eliminado es: " + quitado;
+         }		 
+function escribir(intro,elArray) { //escribir resultados en la página.
+         texto = document.getElementById("caja");
+         texto.innerHTML = intro;
+         for (i in elArray) {
+            texto.innerHTML += elArray[i]+ " "; 
+            }
+         }
+</script>
+</head>
+<body>
+<div class="col-md-12">
+<h1 style="margin-left:auto;margin-right:auto">Orden de Serie</h1>
+  <p>A partir del siguiente array vamos a ver varios métodos:</p>
+  <p><tt> Numeros = [10,2,0,1,3,4,5]</tt></p>
+<form action="#" name="orden">
+  <p>Ordenado Acendentemente
+      <input class="btn btn-primary" type="button" onclick="elInverso()" value="Ordenar" /></p>
+  <p>Escribe dos números del 1 al 7:</p>
+  <p><div class="col-xs-1">
+    <input type="text" class="form-control" name="num1" maxlength="1" size="1" placeholder="Primer Numero">
+  </div>
+  <div class="col-xs-1">
+    <input type="text" class="form-control" name="num2" maxlength="1" size="1" placeholder="Segundo Numero">
+  </div>
+     <input class="btn btn-primary" type="button" onclick="porcion()" value="Ver días seleccionados." /></p> 
+  <p>Elimina el primer elemento</p>
+  <p><input class="btn btn-primary" type="button" onclick="quitar()" value="Eliminar primer elemento"  /> </p>
+</form>
+</div>
+<div class="form-control" id="caja"></div>
+</body>
+</html>
